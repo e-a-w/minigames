@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :games
+  resources :games, only: %i[index show]
   root "games#index"
 end

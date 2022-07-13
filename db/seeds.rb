@@ -1,3 +1,5 @@
+Game.destroy_all
+
 Game.create([
   {
     name: 'Matching',
@@ -10,7 +12,7 @@ Game.create([
     rules: 'Find the fish'
   },
   {
-    name: 'Waar',
+    name: 'War',
     description: 'a fun battling game',
     rules: 'Take all the cards'
   },

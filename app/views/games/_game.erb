@@ -1,0 +1,19 @@
+<div id="<%= dom_id game %>" class="card">
+  <header class="card-header">
+    <h2 class="card-title">
+      <%= game.name %>
+    </h2>
+
+    <p class="card-subtitle">
+      <%= game.description %>
+    </p>
+  </header>
+
+  <div class="card-body">
+    <p>
+      <%= game.rules %>
+    </p>
+  </div>
+
+  <%= button_to "play game!", game, method: :get, form_class: "card-btn" %>
+</div>
