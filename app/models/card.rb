@@ -4,14 +4,20 @@ class Card < ApplicationRecord
   belongs_to :suit
 
   delegate :color, to: :suit
-  delegate :_type, to: :deck
 
   def name
-    case _type
-    when 'standard'
+    if deck.standard?
       rank.name + " of " + suit.name
     else
       rank.name + ", " + suit.name
     end
+  end
+
+  def bg_color
+    color
+  end
+
+  def text_color
+    deck.tea? ? '#000000' : '#ffffff'
   end
 end

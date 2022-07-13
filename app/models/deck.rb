@@ -2,6 +2,7 @@
 class Deck < ApplicationRecord
   enum _type: { tea: 0, fish: 1, standard: 2 }
 
+  has_many :games
   has_many :ranks
   has_many :suits
   has_many :cards

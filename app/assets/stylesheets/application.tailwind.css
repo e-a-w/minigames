@@ -30,4 +30,8 @@ body {
   .card-btn {
     @apply bg-green-700 text-white font-semibold px-2 py-2 rounded-sm shadow-sm transition-colors hover:bg-green-900 focus:bg-green-900;
   }
+
+  .game-card {
+    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-black flex flex-col gap-1 py-2 justify-between items-center cursor-pointer border;
+  }
 }

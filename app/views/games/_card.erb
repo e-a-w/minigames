@@ -1,5 +1,5 @@
-<div class="border border-red-800 bg-red-600 text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-black flex flex-col gap-1 justify-center items-center cursor-pointer">
-  <span>Rank</span>
-  <span class="italic">of</span>
-  <span>Suit</span>
-</div>
+
+<%= content_tag :div, class: ["game-card"], style: "background: #{card.bg_color}; color: #{card.text_color};" do %>
+  <span><%= card.rank.name %></span>
+  <span class="italic"><%= card.suit.name %> tea</span>
+<% end %>

@@ -19,6 +19,8 @@ class GamesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_game
     @game = Game.find(params[:id])
+    @deck = @game.deck
+    @cards = @game.card_collection.shuffle
   end
 
   # Only allow a list of trusted parameters through.

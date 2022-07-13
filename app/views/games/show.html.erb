@@ -16,7 +16,9 @@
     </p>
   </section>
 
-  <section>
-    <%= render 'card' %>
+  <section class="grid gap-3 grid-cols-8">
+    <% @cards.each do |card| %>
+      <%= render "card", card: card %>
+    <% end %>
   </section>
 </div>

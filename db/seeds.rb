@@ -2,31 +2,11 @@ puts "--- STARTING ---"
 
 puts "destroying records"
 
-Game.destroy_all
-Deck.destroy_all
-Card.destroy_all
-Rank.destroy_all
-Suit.destroy_all
-
-puts "creating games"
-
-Game.create!([
-  {
-    name: 'Matching',
-    description: 'a fun matching game',
-    rules: 'Match the cards'
-  },
-  {
-    name: 'Go Fish',
-    description: 'a fun fishing game',
-    rules: 'Find the fish'
-  },
-  {
-    name: 'War',
-    description: 'a fun battling game',
-    rules: 'Take all the cards'
-  },
-])
+Game.delete_all
+Deck.delete_all
+Card.delete_all
+Rank.delete_all
+Suit.delete_all
 
 puts "creating decks"
 
@@ -48,17 +28,42 @@ Deck.create!([
   },
 ])
 
+tea_deck_id = Deck.where(_type: 0).first.id
+fish_deck_id = Deck.where(_type: 1).first.id
+standard_deck_id = Deck.where(_type: 2).first.id
+
+puts "creating games"
+
+Game.create!([
+  {
+    name: 'Matching',
+    description: 'a fun matching game',
+    rules: 'Match the cards',
+    deck_id: tea_deck_id
+  },
+  {
+    name: 'Go Fish',
+    description: 'a fun fishing game',
+    rules: 'Find the fish',
+    deck_id: fish_deck_id
+  },
+  {
+    name: 'War',
+    description: 'a fun battling game',
+    rules: 'Take all the cards',
+    deck_id: standard_deck_id
+  },
+])
+
 puts "creating tea cards, ranks, suits"
 
 TEA_VARIETIES = [
-  {name: 'Black', color: 'black'},
-  {name: 'Green', color: 'green'},
-  {name: 'Herbal', color: 'rose'},
-  {name: 'Oolong', color: 'amber'},
-  {name: 'White', color: 'gray'},
+  {name: 'Black', color: 'silver'},
+  {name: 'Green', color: 'lightgreen'},
+  {name: 'Herbal', color: 'lightpink'},
+  {name: 'Oolong', color: 'khaki'},
+  {name: 'White', color: 'seashell'},
 ].freeze
-
-tea_deck_id = Deck.where(_type: 0).first.id
 
 TEA_VARIETIES.each do |tea|
   suit = Suit.create!(deck_id: tea_deck_id, name: tea[:name].downcase, color: tea[:color])
@@ -72,14 +77,12 @@ end
 puts "creating fish cards, ranks, suits"
 
 FISH_VARIETIES = [
-  {name: 'shark', color: 'stone', fishes: %w[great_white thresher mako whale]},
-  {name: 'ray', color: 'green', fishes: %w[manta eagle sting cownose]},
-  {name: 'eel', color: 'lime', fishes: %w[electric moray conger sawtooth]},
-  {name: 'saltwater', color: 'fuchsia', fishes: %w[tuna yellow_tang angler_fish swordfish]},
-  {name: 'freshwater', color: 'blue', fishes: %w[rainbow_trout bluegill carp striped_bass]},
+  {name: 'shark', color: 'grey', fishes: %w[great_white thresher mako whale]},
+  {name: 'ray', color: 'goldenrod', fishes: %w[manta eagle sting cownose]},
+  {name: 'eel', color: 'yellowgreen', fishes: %w[electric moray conger sawtooth]},
+  {name: 'saltwater', color: 'mediumorchid', fishes: %w[tuna yellow_tang angler_fish swordfish]},
+  {name: 'freshwater', color: 'mediumturquoise', fishes: %w[rainbow_trout bluegill carp striped_bass]},
 ].freeze
-
-fish_deck_id = Deck.where(_type: 1).first.id
 
 FISH_VARIETIES.each do |fish|
   suit = Suit.create!(deck_id: fish_deck_id, name: fish[:name], color: fish[:color])
@@ -100,8 +103,6 @@ STANDARD_SUITS = [
 ].freeze
 
 STANDARD_RANKS = %w[ace two three four five six seven eight nine ten jack queen king].freeze
-
-standard_deck_id = Deck.where(_type: 2).first.id
 
 STANDARD_SUITS.each do |suit|
   suit = Suit.create!(deck_id: standard_deck_id, name: suit[:name], color: suit[:color])
