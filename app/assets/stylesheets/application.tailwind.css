@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 body {
-  @apply font-light;
+  @apply font-light bg-indigo-50;
 }
 
 @layer components {
+  .top-navbar {
+    @apply fixed top-0 left-0 h-14 w-full flex justify-center items-center text-white bg-indigo-900 transition-colors hover:text-orange-300 focus:text-orange-300;
+  }
+
   .card {
-    @apply flex flex-col justify-between items-center border border-gray-700 rounded-sm shadow-md p-5;
+    @apply flex flex-col justify-between items-center bg-white border border-indigo-900 rounded-sm shadow-md p-5;
   }
 
   .card-header {
-    @apply pb-3 mb-3 border-b border-b-gray-300 flex flex-col items-center justify-center;
+    @apply pb-3 mb-3 border-b border-b-orange-500 flex flex-col items-center justify-center;
   }
 
   .card-title {
@@ -27,11 +31,20 @@ body {
     @apply pb-3 flex flex-col items-center justify-center;
   }
 
-  .card-btn {
-    @apply bg-green-700 text-white font-semibold px-2 py-2 rounded-sm shadow-sm transition-colors hover:bg-green-900 focus:bg-green-900;
+  .btn {
+    @apply select-none bg-indigo-700 text-white font-semibold px-2 py-2 rounded-md shadow-sm shadow-indigo-600 transition-colors hover:bg-indigo-900 focus:bg-indigo-900;
   }
 
   .game-card {
-    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-black flex flex-col gap-1 py-2 justify-between items-center cursor-pointer;
+    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-indigo-900 flex flex-col gap-1 px-1 py-2 justify-between items-center cursor-pointer;
+  }
+
+  .game-card-initial {
+    background-color: #e0e7ff;
+    opacity: .8;
+    background-image: linear-gradient(135deg, #312e81 25%, transparent 25%), linear-gradient(225deg, #312e81 25%, transparent 25%), linear-gradient(45deg, #312e81 25%, transparent 25%), linear-gradient(315deg, #312e81 25%, #e0e7ff 25%);
+    background-position:  10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
   }
 }

@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   receiveUpdate(event) {
-    const { cardFlip, cardId } = event.data
+    const { cardFlip } = event.data
     this.previouslyFlippedValue = this.flippedCardCountValue
     this.flippedCardCountValue += cardFlip
 

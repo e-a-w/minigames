@@ -37,18 +37,21 @@ puts "creating games"
 Game.create!([
   {
     name: 'Matching',
+    _type: 1,
     description: 'a fun matching game',
-    rules: 'Match the cards',
+    rules: 'Click the cards two at a time to match them!',
     deck_id: tea_deck_id
   },
   {
     name: 'Go Fish',
+    _type: 2,
     description: 'a fun fishing game',
     rules: 'Find the fish',
     deck_id: fish_deck_id
   },
   {
     name: 'War',
+    _type: 0,
     description: 'a fun battling game',
     rules: 'Take all the cards',
     deck_id: standard_deck_id
@@ -58,11 +61,11 @@ Game.create!([
 puts "creating tea cards, ranks, suits"
 
 TEA_VARIETIES = [
-  {name: 'Black', color: 'silver'},
-  {name: 'Green', color: 'lightgreen'},
-  {name: 'Herbal', color: 'lightpink'},
-  {name: 'Oolong', color: 'khaki'},
-  {name: 'White', color: 'seashell'},
+  {name: 'Black', color: 'rgb(192, 192, 192)'},
+  {name: 'Green', color: 'rgb(144, 238, 144)'},
+  {name: 'Herbal', color: 'rgb(255, 182, 193)'},
+  {name: 'Oolong', color: 'rgb(240, 230, 140)'},
+  {name: 'White', color: 'rgb(255, 245, 238)'},
 ].freeze
 
 TEA_VARIETIES.each do |tea|
@@ -77,11 +80,11 @@ end
 puts "creating fish cards, ranks, suits"
 
 FISH_VARIETIES = [
-  {name: 'shark', color: 'grey', fishes: %w[great_white thresher mako whale]},
-  {name: 'ray', color: 'goldenrod', fishes: %w[manta eagle sting cownose]},
-  {name: 'eel', color: 'yellowgreen', fishes: %w[electric moray conger sawtooth]},
-  {name: 'saltwater', color: 'mediumorchid', fishes: %w[tuna yellow_tang angler_fish swordfish]},
-  {name: 'freshwater', color: 'mediumturquoise', fishes: %w[rainbow_trout bluegill carp striped_bass]},
+  {name: 'shark', color: 'rgb(220, 220, 220)', fishes: %w[great_white thresher mako whale]},
+  {name: 'ray', color: 'rgb(218, 165, 32)', fishes: %w[manta eagle sting cownose]},
+  {name: 'eel', color: 'rgb(154, 205, 50)', fishes: %w[electric moray conger sawtooth]},
+  {name: 'saltwater', color: 'rgb(186, 85, 211)', fishes: %w[tuna yellow_tang angler_fish swordfish]},
+  {name: 'freshwater', color: 'rgb(72, 209, 204)', fishes: %w[rainbow_trout bluegill carp striped_bass]},
 ].freeze
 
 FISH_VARIETIES.each do |fish|
@@ -96,10 +99,10 @@ end
 puts "creating standard cards, ranks, suits"
 
 STANDARD_SUITS = [
-  {name: 'spades', color: 'black'},
-  {name: 'clubs', color: 'black'},
-  {name: 'hearts', color: 'red'},
-  {name: 'diamonds', color: 'red'},
+  {name: 'spades', color: 'rgb(0, 0, 0)'},
+  {name: 'clubs', color: 'rgb(0, 0, 0)'},
+  {name: 'hearts', color: 'rgb(255, 0, 0)'},
+  {name: 'diamonds', color: 'rgb(255, 0, 0)'},
 ].freeze
 
 STANDARD_RANKS = %w[ace two three four five six seven eight nine ten jack queen king].freeze

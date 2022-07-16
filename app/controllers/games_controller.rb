@@ -16,7 +16,7 @@ class GamesController < ApplicationController
   def set_game
     @game = Game.find(params[:id])
     @deck = @game.deck
-    @cards = @game.card_collection(shuffled: false)
+    @cards = @game.card_collection
   end
 
   def game_params
