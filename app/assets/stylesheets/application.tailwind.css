@@ -36,7 +36,7 @@ body {
   }
 
   .game-card {
-    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-indigo-900 flex flex-col gap-1 px-1 py-2 justify-between items-center cursor-pointer;
+    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-indigo-900 flex flex-col gap-1 px-1 py-2 justify-between items-center cursor-pointer font-mono;
   }
 
   .game-card-initial {

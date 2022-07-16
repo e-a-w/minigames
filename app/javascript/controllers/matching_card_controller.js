@@ -39,7 +39,6 @@ export default class extends Controller {
     }
 
     this.nameTargets.forEach(t => t.classList.toggle("hidden"))
-    this.questionTarget.classList.toggle("hidden")
 
     this.updateEvent.data = { cardFlip: this.cardFlipValue, cardId: this.element.getAttribute("dom_class") }
     this.element.dispatchEvent(this.updateEvent)

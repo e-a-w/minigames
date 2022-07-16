@@ -44,7 +44,7 @@
     <section class="flex flex-wrap justify-center items-center px-5 gap-5 lg:grid lg:grid-cols-8 xl:grid-cols-10" >
       <% @cards.each do |card| %>
         <%= content_tag :div,
-          class: ["game-card", "z-90", "game-card-initial"],
+          class: ["game-card", "z-90", "border-t-4", "border-t-orange-600", "game-card-initial"],
           style: "color: #{card.text_color};",
           dom_class: "c#{card.id}",
           data: {
