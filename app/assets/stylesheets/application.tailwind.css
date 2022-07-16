@@ -8,7 +8,7 @@ body {
 
 @layer components {
   .card {
-    @apply flex flex-col items-center border border-gray-700 rounded-sm shadow-md p-5;
+    @apply flex flex-col justify-between items-center border border-gray-700 rounded-sm shadow-md p-5;
   }
 
   .card-header {
@@ -32,6 +32,6 @@ body {
   }
 
   .game-card {
-    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-black flex flex-col gap-1 py-2 justify-between items-center cursor-pointer border;
+    @apply text-white font-semibold h-36 w-28 rounded-sm shadow-sm shadow-black flex flex-col gap-1 py-2 justify-between items-center cursor-pointer;
   }
 }

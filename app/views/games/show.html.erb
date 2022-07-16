@@ -1,4 +1,11 @@
-<div id="<%= dom_id @game %>" class="w-full text-center flex flex-col justify-center items-center gap-5">
+<div
+  data-controller="matching-game"
+  data-matching-game-target="matched-sets"
+  data-action="gameUpdate->matching-game#receiveUpdate"
+  data-matching-game-total-sets-value="<%= @game.card_collection.count / 2 %>"
+  class="w-full text-center flex flex-col justify-center items-center gap-5"
+>
+
   <header>
     <h2 class="font-semibold text-2xl">
       <%= @game.name %>
@@ -9,16 +16,50 @@
     </p>
   </header>
 
-  <section>
+  <section class="py-3 text-left">
     <p>
       <strong>Rules: </strong>
       <%= @game.rules %>
     </p>
+    <p>
+      <strong>Matched Sets:</strong>
+      <span id="matched-sets" data-matching-game-target="matched">0</span>
+      / <%= @game.card_collection.count / 2 %>
+    </p>
+    <div class="text-center pt-3">
+      <%= button_to "Play again?",
+        @game,
+        method: :get,
+        target: "_top",
+        data: {
+          turbo_frame: "game_#{@game.id}",
+          action: "click->matching-game#resetGame"
+        },
+        class: "p-2 rounded-sm shadow-sm shadow-blue-800 cursor-pointer bg-blue-500 text-white transition-colors hover:bg-blue-700 focus:bg-blue-700"
+      %>
+    </div>
   </section>
 
-  <section class="grid gap-3 grid-cols-8">
-    <% @cards.each do |card| %>
-      <%= render "card", card: card %>
-    <% end %>
-  </section>
+  <%= turbo_frame_tag @game do %>
+    <section class="flex flex-wrap justify-center items-center gap-3 lg:grid lg:grid-cols-8 xl:grid-cols-10" >
+      <% @cards.each do |card| %>
+        <%= content_tag :div,
+          class: ["game-card", "z-90"],
+          style: "background: rgb(150, 150, 150); color: #{card.text_color};",
+          dom_class: "c#{card.id}",
+          data: {
+            controller: "matching-card",
+            action: "click->matching-card#flipCard",
+            matching_card_initial_color_value: card.bg_color,
+            matching_card_reveal_color_value: "rgb(150, 150, 150)",
+            matching_card_target: "card",
+            matching_game_target: "card"
+          } do %>
+            <span data-matching-card-target="question" class="select-none font-bold text-white text-2xl my-auto w-full">?</span>
+            <span data-matching-card-target="name" class="hidden select-none"><%= card.rank.name %></span>
+            <span data-matching-card-target="name" class="italic hidden select-none"><%= card.suit.name %> tea</span>
+        <% end %>
+      <% end %>
+    </section>
+  <% end %>
 </div>
